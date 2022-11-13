@@ -86,8 +86,7 @@ const result = document.getElementById("result");
 
 let correctAnswerCount = 0;
 let questionTotalIndicator = 0;
-const category = new URL(window.location).pathname;
-console.log(category);
+const category = new URL(window.location).pathname.slice(1);
 const generator = getQuestion(category);
 generateForm(generator);
 
