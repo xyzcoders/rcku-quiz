@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.wrapper, .main, .form, .form__inputs {
+  display: grid;
+}
+.wrapper {
+  justify-items: center;
+}
+.main {
+  row-gap: 10px;
+  min-width: 300px;
+  max-width: 70%;
+}
+.form {
+  row-gap: 10px;
+}
+.form__inputs {
+  row-gap: 5px;
+}
+.form__inputs label {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.form__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  padding: 7px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#question__check {
+  background-color: rgb(49, 121, 255);
+  color: white;
+  font-weight: bold;
+}
