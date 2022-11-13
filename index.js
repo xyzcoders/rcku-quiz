@@ -7,7 +7,11 @@ function elt(type, props, ...children) {
   }
   return element;
 }
-
+async function getCourseFullName(path) {
+  const res = await fetch(`/get_course_full_name.php?path=${path}`);
+  const data = await res.json();
+  return await data.full_name;
+}
 async function* getQuestion(category = "matematyka") {
   const res = await fetch(`/get_question.php?question=${category}`);
   const data = await res.json();
@@ -84,14 +88,20 @@ const formInputs = document.getElementById("form__inputs")
 const nextQuestion = document.getElementById("question__next");
 const submitButton = document.getElementById("question__check");
 const questionTitle = document.getElementById("question__title");
+const courseName = document.getElementById("course__name");
 const result = document.getElementById("result");
 
 let correctAnswerCount = 0;
 let questionTotalIndicator = 0;
 const category = new URL(window.location).pathname.slice(1);
 const generator = getQuestion(category);
-generateForm(generator);
 let submitted = false;
+
+generateForm(generator);
+
+window.onload = async () => {
+  courseName.textContent = await getCourseFullName(category);
+}
 form.addEventListener("submit", e => {
   e.preventDefault()
   const input = formInputs.querySelector("input[type=radio]:checked");

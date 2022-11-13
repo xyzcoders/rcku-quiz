@@ -6,7 +6,9 @@
   <div class="wrapper">
     <?php require "components/header.php" ?>
     <main id="main" class="main">
-      <div id="question__title" class="question__title"></div>
+      <div>
+        <div id="question__title" class="question__title"></div>
+      </div>
       <form id="form" class="form">
         <div id="form__inputs" class="form__inputs"></div>
         <div id="form__buttons" class="form__buttons">
