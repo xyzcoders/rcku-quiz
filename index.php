@@ -2,7 +2,7 @@
 $path = parse_url($_SERVER["REQUEST_URI"])["path"];
 switch ($path) {
   case "/biologia":
-  case "/informatyka":
+  case "/gry":
   case "/matematyka":
     require __DIR__ . "/views/quiz.php";
     break;

@@ -55,7 +55,9 @@ function displayForm(answers) {
       "is_correct": is_correct,
       "name": "question"
     });
-    const label = elt("label", {}, input, answer);
+    const label = elt("label", {
+      classList: ["label"]
+    }, input, answer);
     answersElelements.push(label);
   }
   cleanForm();

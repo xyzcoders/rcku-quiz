@@ -1,9 +1,16 @@
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: linear-gradient(rgb(18, 93, 255), rgb(0, 89, 255));
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+body {
+  height: 100vh;
 }
 .wrapper, .main, .form, .form__inputs {
   display: grid;
@@ -11,10 +18,29 @@ html, body {
 .wrapper {
   justify-items: center;
 }
+.header {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px 0;
+}
+.main {
+  background-color: rgb(245, 245, 245);
+  padding: 10px;
+  border-radius: 10px;
+}
 .main {
   row-gap: 10px;
   min-width: 300px;
   max-width: 70%;
+}
+.question__title {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid rgba(228, 228, 228, 0.863);
 }
 .form {
   row-gap: 10px;
@@ -32,10 +58,11 @@ html, body {
   justify-content: space-between;
 }
 .button {
-  padding: 7px;
-  font-size: 15px;
+  padding: 8px;
+  font-size: 18px;
   border: 0;
   border-radius: 5px;
+  border: 2px solid rgba(128, 128, 128, 0.418);
   cursor: pointer;
 }
 #question__check {
