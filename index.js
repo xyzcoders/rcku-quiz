@@ -91,11 +91,12 @@ let questionTotalIndicator = 0;
 const category = new URL(window.location).pathname.slice(1);
 const generator = getQuestion(category);
 generateForm(generator);
-
+let submitted = false;
 form.addEventListener("submit", e => {
   e.preventDefault()
   const input = formInputs.querySelector("input[type=radio]:checked");
   if (input !== null) {
+    submitted = true;
     if(input.is_correct) {
       submitButton.style.backgroundColor = "green";
       submitButton.value = "Dobra odpowiedź";
@@ -103,12 +104,18 @@ form.addEventListener("submit", e => {
       submitButton.style.backgroundColor = "red";
       submitButton.value = "Zła odpowiedź";
     }
-    correctAnswerCount += Number(input.is_correct);
-    formInputs.style.pointerEvents = "none";
-    submitButton.style.pointerEvents = "none";
+    if(nextQuestion.classList.contains("question__next--disabled")) {
+      nextQuestion.classList.toggle("question__next--disabled");
+    }
   }
 });
 nextQuestion.addEventListener("click", e => {
+  const input = formInputs.querySelector("input[type=radio]:checked");
+  if(!submitted) {
+    return;
+  }
+  correctAnswerCount += Number(input.is_correct);
+  submitted = false;
+  nextQuestion.classList.toggle("question__next--disabled");
   generateForm(generator);
-  formInputs.style.pointerEvents = "all";
 });

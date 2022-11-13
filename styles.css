@@ -12,6 +12,7 @@ html, body {
 body {
   min-height: 100vh;
 }
+
 .wrapper, .main, .form, .form__inputs {
   display: grid;
 }
@@ -44,6 +45,9 @@ body {
   word-break: break-all;
   border: 2px solid rgba(228, 228, 228, 0.863);
 }
+.question__title:empty {
+  display: none;
+}
 .form {
   row-gap: 10px;
 }
@@ -56,6 +60,7 @@ body {
   gap: 5px;
   padding: 10px;
   border-radius: 10px;
+  border: 3px solid transparent;
   cursor: pointer;
   background-color: white;
   font-size: 16px;
@@ -85,4 +90,8 @@ body {
   background-color: rgb(49, 121, 255);
   color: white;
   font-weight: bold;
+}
+.question__next--disabled {
+  filter: brightness(80%);
+  cursor: default;
 }
