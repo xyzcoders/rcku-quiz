@@ -1,7 +1,7 @@
 <?php
 $path = rtrim(parse_url($_SERVER["REQUEST_URI"])["path"], "/");
 switch ($path) {
-  case "/oze" || "/oze/":
+  case "/oze":
   case "/informatyk":
   case "/hotelarstwo":
   case "/turystyka":

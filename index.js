@@ -115,7 +115,8 @@ const result = document.getElementById("result");
 
 let correctAnswerCount = 0;
 let questionTotalIndicator = 0;
-const category = new URL(window.location).pathname.slice(1);
+const category = new URL(window.location).pathname.slice(1).replace("/", "");
+console.log(category);
 const generator = getQuestion(category);
 let submitted = false;
 

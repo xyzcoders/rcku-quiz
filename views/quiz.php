@@ -19,7 +19,7 @@
       <div id="result"></div>
     </main>
   </div>
-  <script src="./index.js" defer></script>
+  <script src="/index.js" defer></script>
 </body>
 
 </html>
