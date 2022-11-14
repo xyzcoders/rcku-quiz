@@ -16,15 +16,20 @@ async function* getQuestion(category = "matematyka") {
   const res = await fetch(`/get_question.php?question=${category}`);
   const data = await res.json();
   const questions = Object.entries(data);
+
   let question_number = 0;
   let question_total = questions.length;
   questionTotalIndicator = question_total;
+  
   try {
-    for (const [question, answers] of questions) {
+    for (const [question, question_data] of questions) {
       question_number++;
+      const answers = question_data.answers; 
       yield await {
         question: question, 
-        answers: answers, 
+        answers: answers,
+        has_image: question_data.has_image,
+        img: question_data.img, 
         number: question_number, 
         total: question_total
       };
@@ -39,6 +44,9 @@ async function* getQuestion(category = "matematyka") {
 function cleanForm(all = false) {
   result.textContent = "";
   formInputs.innerHTML = "";
+  if(document.querySelector(".question__img") !== null) {
+    questionWrapper.removeChild(document.querySelector(".question__img"));
+  }
   if(all){
     questionTitle.textContent = ""
   }
@@ -48,11 +56,8 @@ function displaySummary() {
   result.textContent = `Odpowiedziano dobrze na ${correctAnswerCount} z ${questionTotalIndicator}`;
   buttonWrapper.style.display = "none";
 }
-function displayForm(answers) {
-  submitButton.value = "Sprawdź";
-  submitButton.style.pointerEvents = "all";
-  submitButton.style.backgroundColor = "rgb(49, 121, 255)";
-  const answersElelements = [];
+function generateInputs(answers) {
+  const answersElements = [];
   for (const [answer, is_correct] of Object.entries(answers)) {
     const input = elt("input", {
       "type": "radio",
@@ -62,13 +67,29 @@ function displayForm(answers) {
     const label = elt("label", {
       classList: ["label"]
     }, input, answer);
-    answersElelements.push(label);
+    answersElements.push(label);
   }
+  return answersElements;
+}
+function displayForm(question_data) {
+  const {question, answers, has_image, img} = question_data;
+  submitButton.value = "Sprawdź";
+  submitButton.style.pointerEvents = "all";
+  submitButton.style.backgroundColor = "rgb(49, 121, 255)";
+  questionTitle.textContent = question;
   cleanForm();
-  formInputs.append(...answersElelements);
+  if(has_image) {
+    questionWrapper.appendChild(elt("img", {
+      src: `../images/${img}`,
+      classList: ["question__img"]
+    }))
+  }
+  const answersElements = generateInputs(answers);
+  formInputs.append(...answersElements);
 }
 async function generateForm(generator) {
   const question_data = await generator.next();
+  console.log(question_data);
   if(question_data.value.number + 1 > question_data.value.total) {
     nextQuestion.value = "Podsumowanie"
   }
@@ -76,7 +97,7 @@ async function generateForm(generator) {
     displaySummary();
     return;
   }
-  displayForm(question_data.value.answers);
+  displayForm(question_data.value);
   const title = question_data.value.question;
   questionTitle.textContent = title;
 }
@@ -88,6 +109,7 @@ const formInputs = document.getElementById("form__inputs")
 const nextQuestion = document.getElementById("question__next");
 const submitButton = document.getElementById("question__check");
 const questionTitle = document.getElementById("question__title");
+const questionWrapper = document.getElementById("question__wrapper");
 const courseName = document.getElementById("course__name");
 const result = document.getElementById("result");
 
@@ -99,9 +121,9 @@ let submitted = false;
 
 generateForm(generator);
 
-window.onload = async () => {
+(async () => {
   courseName.textContent = await getCourseFullName(category);
-}
+});
 form.addEventListener("submit", e => {
   e.preventDefault()
   const input = formInputs.querySelector("input[type=radio]:checked");

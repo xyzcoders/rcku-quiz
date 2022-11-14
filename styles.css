@@ -36,6 +36,10 @@ body {
   max-width: 500px;
   min-width: 350px;
 }
+#question__wrapper {
+  display: grid;
+  justify-items: center;
+}
 .question__title {
   background-color: white;
   width: 100%;
@@ -47,6 +51,9 @@ body {
 }
 .question__title:empty {
   display: none;
+}
+.question__img {
+  width: 50%;
 }
 .form {
   row-gap: 10px;
