@@ -110,21 +110,24 @@ const nextQuestion = document.getElementById("question__next");
 const submitButton = document.getElementById("question__check");
 const questionTitle = document.getElementById("question__title");
 const questionWrapper = document.getElementById("question__wrapper");
+const courseWrapper = document.getElementById("course__wrapper");
 const courseName = document.getElementById("course__name");
 const result = document.getElementById("result");
 
 let correctAnswerCount = 0;
 let questionTotalIndicator = 0;
 const category = new URL(window.location).pathname.slice(1).replace("/", "");
-console.log(category);
 const generator = getQuestion(category);
 let submitted = false;
-
 generateForm(generator);
-
-(async () => {
-  courseName.textContent = await getCourseFullName(category);
-});
+window.onload = async () => {
+  console.log(typeof category);
+  if(!category) {
+    courseWrapper.style.display = "none";
+  } else {
+    courseName.textContent = await getCourseFullName(category);
+  }
+};
 form.addEventListener("submit", e => {
   e.preventDefault()
   const input = formInputs.querySelector("input[type=radio]:checked");
@@ -143,6 +146,7 @@ form.addEventListener("submit", e => {
   }
 });
 nextQuestion.addEventListener("click", e => {
+
   const input = formInputs.querySelector("input[type=radio]:checked");
   if(!submitted) {
     return;

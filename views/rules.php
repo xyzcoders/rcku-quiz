@@ -4,7 +4,9 @@
 
 <body>
   <div class="wrapper">
-    <?php require __DIR__ . "/components/header.php" ?>
+    <header class="header">
+      <h1>RCKU Quiz</h1>
+    </header>
     <main class="main" id="main">
       <ol>
         <div>

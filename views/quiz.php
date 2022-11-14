@@ -4,7 +4,10 @@
 
 <body>
   <div class="wrapper">
-    <?php require "components/header.php" ?>
+    <header class="header">
+      <h1>RCKU Quiz</h1>
+      <div id="course__wrapper">Pytania ze specjalizacji: <span id="course__name"></span></div>
+    </header>
     <main id="main" class="main">
       <div id="question__wrapper">
         <div id="question__title" class="question__title"></div>
