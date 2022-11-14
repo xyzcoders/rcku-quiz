@@ -53,6 +53,7 @@ function cleanForm(all = false) {
 }
 function displaySummary() {
   cleanForm(true);
+  document.getElementById("main").style.display = "block";
   result.textContent = `Odpowiedziano dobrze na ${correctAnswerCount} z ${questionTotalIndicator}`;
   buttonWrapper.style.display = "none";
 }
@@ -89,7 +90,6 @@ function displayForm(question_data) {
 }
 async function generateForm(generator) {
   const question_data = await generator.next();
-  console.log(question_data);
   if(question_data.value.number + 1 > question_data.value.total) {
     nextQuestion.value = "Podsumowanie"
   }
@@ -121,12 +121,7 @@ const generator = getQuestion(category);
 let submitted = false;
 generateForm(generator);
 window.onload = async () => {
-  console.log(typeof category);
-  if(!category) {
-    courseWrapper.style.display = "none";
-  } else {
-    courseName.textContent = await getCourseFullName(category);
-  }
+  courseName.textContent = await getCourseFullName(category);
 };
 form.addEventListener("submit", e => {
   e.preventDefault()
