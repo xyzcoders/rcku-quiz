@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect("example_copy.sqlite")
+conn = sqlite3.connect("example_copy1.sqlite")
 cur = conn.cursor()
 
 cat_exists = input("Kierunek już istnieje? [t/n]")

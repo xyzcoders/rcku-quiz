@@ -1,2 +1,2 @@
 <?php
-$db = new SQLite3("./example.sqlite");
+$db = new SQLite3("./baza.sqlite");
