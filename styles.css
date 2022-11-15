@@ -147,3 +147,11 @@ body {
 .rule {
   font-weight: bold;
 }
+.rules {
+  padding: 20px 35px;
+  text-align: justify;
+  hyphens: auto;
+  display: grid;
+  row-gap: 15px;
+  font-size: 20px;
+}

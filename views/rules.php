@@ -8,7 +8,7 @@
       <h1>RCKU Quiz</h1>
     </header>
     <main class="main" id="main">
-      <ol>
+      <ol class="rules">
         <div>
           <li class="rule">
             Odpowiedz prawidłowo na pytania
