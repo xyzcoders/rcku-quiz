@@ -3,8 +3,10 @@
 <?php require __DIR__ . "/components/head.php" ?>
 
 <body>
-  <h1>404</h1>
-  <p>Nie znaleziono strony</p>
+  <div class="wrapper">
+    <h1 class="page__code">404</h1>
+    <p class="page__notfound">Nie znaleziono strony</p>
+  </div>
 </body>
 
 </html>

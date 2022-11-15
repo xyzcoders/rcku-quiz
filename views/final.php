@@ -17,7 +17,7 @@
         <span class="input__wrapper"></span>
         !
         <span class="input__wrapper"></span>,
-        <span class="input__wrapper"></span>,
+        <span class="input__wrapper"></span>
         i
         <span class="input__wrapper"></span>!
       </p>

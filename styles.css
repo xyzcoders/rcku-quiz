@@ -131,3 +131,12 @@ body {
   background-color: rgb(199, 199, 199);
   border: none;
 }
+.page__code {
+  font-size: 30vw;
+  color: white;
+}
+.page__notfound {
+  font-size: 3vw;
+  color: white;
+  font-weight: bold;
+}
