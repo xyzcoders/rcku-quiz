@@ -1,6 +1,10 @@
 <?php
 $path = rtrim(parse_url($_SERVER["REQUEST_URI"])["path"], "/");
 switch ($path) {
+  case "":
+  case "/":
+    require __DIR__ . "/views/rules.php";
+    break;
   case "/oze":
   case "/informatyk":
   case "/hotelarstwo":
@@ -12,6 +16,7 @@ switch ($path) {
     require __DIR__ . "/views/quiz.php";
     break;
   default:
-    require __DIR__ . "/views/rules.php";
+    http_response_code(404);
+    require __DIR__ . "/views/404.php";
     break;
 }
