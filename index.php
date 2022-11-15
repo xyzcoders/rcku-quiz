@@ -1,6 +1,9 @@
 <?php
 $path = rtrim(parse_url($_SERVER["REQUEST_URI"])["path"], "/");
 switch ($path) {
+  case "/final":
+    require __DIR__ . "/views/final.php";
+    break;
   case "":
   case "/":
     require __DIR__ . "/views/rules.php";
