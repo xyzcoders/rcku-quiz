@@ -15,7 +15,7 @@
       <form id="form" class="form">
         <div id="form__inputs" class="form__inputs"></div>
         <div id="form__buttons" class="form__buttons">
-          <input type="submit" class="button" id="question__check" value="Sprawdź">
+          <input type="submit" class="button question__check" id="question__check" value="Sprawdź">
           <input type="button" class="button question__next--disabled" id="question__next" value="Następne pytanie">
         </div>
       </form>

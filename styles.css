@@ -83,6 +83,7 @@ body {
 
 .form__buttons {
   display: flex;
+  gap: 20px;
   justify-content: space-between;
 }
 .button {
@@ -93,7 +94,7 @@ body {
   border: 2px solid rgba(128, 128, 128, 0.418);
   cursor: pointer;
 }
-#question__check {
+.question__check {
   background-color: rgb(49, 121, 255);
   color: white;
   font-weight: bold;
@@ -142,4 +143,7 @@ body {
 }
 .page__return {
   color: white;
+}
+.rule {
+  font-weight: bold;
 }
